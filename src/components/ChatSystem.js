@@ -12,7 +12,7 @@ import './ChatSystem.css';
 //   transports: ['websocket']
 // });  
 
-const socket = io('wss://qurious.ddns.net/qurious-engagement', {
+const socket = io('wss://qurious.ddns.net', {
   path: '/qurious-engagement/socket.io/',
   transports: ['websocket']
 });
