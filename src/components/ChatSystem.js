@@ -5,12 +5,17 @@ import './ChatSystem.css';
 
 // const socket = io('http://localhost:9000');
 
-const socket = io('http://localhost:9000', {
-  reconnection: true,
-  // reconnectionAttempts: 5,
-  // reconnectionDelay: 1000,
+// const socket = io('http://localhost:9000', {
+//   reconnection: true,
+//   // reconnectionAttempts: 5,
+//   // reconnectionDelay: 1000,
+//   transports: ['websocket']
+// });  
+
+const socket = io('wss://qurious.ddns.net/qurious-engagement', {
+  path: '/qurious-engagement/socket.io/',
   transports: ['websocket']
-});  
+});
 
 const ChatSystem = ({ currentUser }) => {
     const [users, setUsers] = useState([]);
@@ -54,10 +59,15 @@ const ChatSystem = ({ currentUser }) => {
     }, []); // Empty dependency array for initial setup
 
     const fetchUsers = async () => {
-        try {
+        // try {
+        //     const response = currentUser.role === "admin" 
+        //   ? await axios.get("http://localhost:9000/organizers") 
+        //   : await axios.get("http://localhost:9000/admins");
+
+         try {
             const response = currentUser.role === "admin" 
-          ? await axios.get("http://localhost:9000/organizers") 
-          : await axios.get("http://localhost:9000/admins");
+          ? await axios.get("https://qurious.ddns.net/qurious-engagement/api/organizers") 
+          : await axios.get("https://qurious.ddns.net/qurious-engagement/api/admins");
             
           setUsers(response.data.filter(user => user._id !== currentUser._id));
         } catch (error) {
@@ -75,7 +85,8 @@ const ChatSystem = ({ currentUser }) => {
             setSelectedUser(user);
             
             const roomResponse = await axios.post(
-                `http://localhost:9000/chat-room/${currentUser._id}/${user._id}`
+                // `http://localhost:9000/chat-room/${currentUser._id}/${user._id}`
+                `https://qurious.ddns.net/qurious-engagement/api/chat-room/${currentUser._id}/${user._id}`
             );
             const chatRoomId = roomResponse.data._id;
             
@@ -85,7 +96,8 @@ const ChatSystem = ({ currentUser }) => {
             
             // Fetch messages for this room
             const messagesResponse = await axios.get(
-                `http://localhost:9000/chat-room/${currentUser._id}/${user._id}`
+                // `http://localhost:9000/chat-room/${currentUser._id}/${user._id}`
+                `https://qurious.ddns.net/qurious-engagement/api/chat-room/${currentUser._id}/${user._id}`
             );
             setMessages(messagesResponse.data.messages);
         } catch (error) {
@@ -146,8 +158,7 @@ const ChatSystem = ({ currentUser }) => {
                                 >
                                     <div className="message-content">{message.content}</div>
                                     <div className="message-timestamp">
-                                        {/* {new Date(message.timestamp).toLocaleTimeString()} */}
-                                        {message.timestamp}
+                                         {new Date(message.timestamp).toLocaleTimeString()} 
                                     </div>
                                 </div>
                             ))}
