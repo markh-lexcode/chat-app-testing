@@ -1,0 +1,129 @@
+.language-statistics {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.language-statistics h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.statistics-event-info {
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.language-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.language-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.language-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.language-name {
+  font-weight: bold;
+}
+
+.language-count {
+  color: #666;
+}
+
+.language-bar-background {
+  height: 25px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.language-bar {
+  height: 100%;
+  background-color: #0084ff;
+  border-radius: 4px;
+  transition: width 0.5s ease-in-out;
+}
+
+.language-statistics.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  color: #666;
+  font-style: italic;
+}
+
+/* Add animations */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.language-bar {
+  animation: pulse 2s infinite;
+}
+
+/* Different colors for the bars */
+.language-bar-container:nth-child(1) .language-bar {
+  background-color: #0084ff;
+}
+
+.language-bar-container:nth-child(2) .language-bar {
+  background-color: #00c853;
+}
+
+.language-bar-container:nth-child(3) .language-bar {
+  background-color: #ffd600;
+}
+
+.language-bar-container:nth-child(4) .language-bar {
+  background-color: #ff6d00;
+}
+
+.language-bar-container:nth-child(5) .language-bar {
+  background-color: #d50000;
+}
+
+.language-bar-container:nth-child(6) .language-bar {
+  background-color: #aa00ff;
+}
+
+.language-bar-container:nth-child(7) .language-bar {
+  background-color: #2962ff;
+}
+
+.language-bar-container:nth-child(8) .language-bar {
+  background-color: #00bfa5;
+}
+
+.language-bar-container:nth-child(9) .language-bar {
+  background-color: #c51162;
+}
+
+.language-bar-container:nth-child(10) .language-bar {
+  background-color: #304ffe;
+}

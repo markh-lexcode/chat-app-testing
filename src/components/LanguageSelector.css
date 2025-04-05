@@ -1,0 +1,31 @@
+.language-selector {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.language-selector label {
+  font-weight: bold;
+}
+
+.language-selector select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.language-selector select:focus {
+  outline: none;
+  border-color: #0084ff;
+  box-shadow: 0 0 0 2px rgba(0, 132, 255, 0.2);
+}
+
+.saving-indicator {
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+}
